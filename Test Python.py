@@ -37,12 +37,13 @@ if __name__ == "__main__":
             break
         elif resp == 3:
             if len(colab) == 0:
-                print("\033[1;34mA lista de colaboradores cadastrados está vazia!\033[m")
+                print("\033[1;34mAinda não foi cadastrado nenhum colaborador!\033[m")
+                continue
             else:
                 while True:
                     try:
                         resp = int(input("Digite o ID do colaborador : "))
-                        if resp > len(colab) or resp <= 0:
+                        if  resp <= 0:
                             print("\033[1;31mOpção inválida, tente novamente!\033[m")
                             continue
                     except:
@@ -53,7 +54,10 @@ if __name__ == "__main__":
                     break
         elif resp == 2:
             print(f"\n{'ID':^4}{'Nome':31}Idade")
-            print("="*40)
+            print("=" * 40)
+            if len(colab) == 0:
+                print("\033[1;34mAinda não foi cadastrado nenhum colaborador!\033[m")
+                continue
             for id, x in enumerate(colab):
                 for name, idade in x.items():
                     print(f"{id+1:^4}{name:<31}{idade:>5}")
